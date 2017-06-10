@@ -8,6 +8,7 @@ main {
   align-content: center;
   font-family: system-ui;
 }
+
 .calculator {
   margin-top: 100px;
   width: 50vw;
@@ -48,6 +49,10 @@ main {
   font-family: inherit;
 }
 
+.col2 {
+  width: 50%;
+}
+
 .background-darkgreen {
   background-color: #61B34F;
   color: #FFFFFF;
@@ -56,4 +61,14 @@ main {
 .background-lightgreen {
   background-color: #81C175;
   color: #3E5E36;
+}
+
+.function:hover {
+  background-color: #81C175;
+  color: #3E5E36;
+}
+
+.button:active {
+  background-color: darkgreen;
+  color: #FFFFFF;
 }

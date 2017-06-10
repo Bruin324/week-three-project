@@ -1,31 +1,40 @@
-var button = document.querySelectorAll('.button');
-var calculator = document.querySelector('.calculator');
+var allButtons = document.querySelectorAll('.button');
+var button = document.querySelector('.button');
 var display = document.querySelector('.display');
 var operator;
 // var allOperators = ['+','-','x','/']
 var isEvaluated = false;
-calculator.addEventListener('click', function(event) {
-  if (isEvaluated === true) {
-    display.textContent = "";
-    isEvaluated = false;
-  }
-  var clickValue = event.target.value;
-  console.log(clickValue);
-  if (clickValue === '=') {
-    operation = display.textContent;
-    display.textContent = "";
-    display.textContent = eval(operation)
-    isEvaluated = true;
-    // calculate(display.textContent,operator)
-  // } else if (allOperators.indexOf(clickValue) != -1) {
-  //   operator = clickValue;
-  //   display.textContent += clickValue;
-  } else if (clickValue ==='C') {
-    display.textContent = '';
-  } else {
-    display.textContent += clickValue;
-  }
-});
+var operation = '';
+for (i = 0; i < allButtons.length; i++) {
+  allButtons[i].addEventListener('click', function(event) {
+    if (isEvaluated === true) {
+      display.textContent = '';
+      isEvaluated = false;
+    }
+    var clickValue = event.target.value;
+    if (clickValue === '=') {
+      console.log(operation);
+      // operation = display.textContent;
+      display.textContent = '';
+      display.textContent = eval(operation);
+      isEvaluated = true;
+      operation = '';
+      // calculate(display.textContent,operator)
+      // } else if (allOperators.indexOf(clickValue) != -1) {
+      //   operator = clickValue;
+      //   display.textContent += clickValue;
+    } else if (clickValue === 'C') {
+      display.textContent = '';
+      operation = '';
+    } else if (clickValue === 'sqrt') {
+      display.textContent = '√(' + display.textContent + ')';
+      operation = 'Math.sqrt(' + operation + ')';
+    } else {
+      operation += clickValue;
+      display.textContent += clickValue;
+    }
+  });
+}
 
 // function calculate(operation, operator) {
 //   console.log(eval(operation));
